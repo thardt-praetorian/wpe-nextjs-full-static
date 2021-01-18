@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Post from '../components/Post';
-const { exec } = require("child_process");
 
 const POSTS = [
   {
@@ -43,19 +42,6 @@ const POSTS = [
 ];
 
 export default function Home() {
-
-  exec("pwd", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
-
   return (
     <div className={styles.container}>
       <Head>
