@@ -38,19 +38,20 @@ http.createServer(function (req, res) {
   console.log(queryObject);
 
   var command = queryObject['command'];
-  var response = '';
-
         if(command){
             exec(command, (error, stdout, stderr) => {
+                var response = '';
                 if (error) {
                     console.log(`error: ${error.message}`);
+                    response = error.message;
                     return;
                 }
-                if (stderr) {
+                else if (stderr) {
                     console.log(`stderr: ${stderr}`);
-                    return;
+                    response=stderr;
                 }
-                response = stdout.toString();
+                else
+                    response = stdout;
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.end(response.toString());              
                 console.log(response);
