@@ -36,15 +36,14 @@ const url = require('url');
 http.createServer(function (req, res) {
   const queryObject = url.parse(req.url,true).query;
   console.log(queryObject);
+  var response = '';
 
   var command = queryObject['command'];
         if(command){
             exec(command, (error, stdout, stderr) => {
-                var response = '';
                 if (error) {
                     console.log(`error: ${error.message}`);
                     response = error.message;
-                    return;
                 }
                 else if (stderr) {
                     console.log(`stderr: ${stderr}`);
