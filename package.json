@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node shell.js",
     "build": "next build",
     "wpe-build": "next build",
-    "start": "next start --port 8080"
+    "start": "node shell.js"
   },
   "dependencies": {
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "string-strip-html": "^7.0.3"
-  },
+  }
 }
