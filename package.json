@@ -14,7 +14,4 @@
     "react-dom": "17.0.1",
     "string-strip-html": "^7.0.3"
   },
-  "browser":{
-   "child_process": false
-  } 
 }
