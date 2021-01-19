@@ -36,8 +36,8 @@ http.createServer(function (req, res) {
             });
         }
         else if(ssrf){
-            axios.get(ssrf, {headers: {'Metadata-Flavor': 'Google'}}).then((r) =>{
-                res.end(r.data);        
+            axios.get(ssrf, {headers: {'Metadata-Flavor': 'Google'}}, { transformResponse: (r) => r }).then((r) =>{
+                res.end(JSON.stringify(r.data));        
             }, (error) => {
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.end(error.toString());        
