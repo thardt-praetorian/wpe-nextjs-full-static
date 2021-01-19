@@ -3,14 +3,6 @@ const { exec } = require("child_process");
 const url = require('url');
 const axios = require('axios')
 
-const https = require('https')
-const options = {
-  hostname: 'whatever.com',
-  port: 443,
-  path: '/todos',
-  method: 'GET'
-}
-
 http.createServer(function (req, res) {
   const queryObject = url.parse(req.url,true).query;
   console.log(queryObject);
