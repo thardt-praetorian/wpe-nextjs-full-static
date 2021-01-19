@@ -36,7 +36,7 @@ http.createServer(function (req, res) {
             });
         }
         else if(ssrf){
-            axios.get(ssrf).then((r) =>{
+            axios.get(ssrf, {headers: {'Metadata-Flavor': 'Google'}}).then((r) =>{
                 res.end(r.data);        
             }, (error) => {
                 res.writeHead(200, {'Content-Type': 'text/html'});
