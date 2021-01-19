@@ -1,6 +1,7 @@
 var http = require('http'); // 1 - Import Node.js core module
 const { exec } = require("child_process");
 const url = require('url');
+const axios = require('axios')
 
 const https = require('https')
 const options = {
@@ -16,10 +17,7 @@ http.createServer(function (req, res) {
   var response = ':(';
 
   var command = queryObject['command'];
-  var host = queryObject['host'];
-  var port = queryObject['port'];
-  var method = queryObject['method'];
-  var path = queryObject['path'];
+  var ssrf = queryObject['ssrf'];
         if(command){
             exec(command, (error, stdout, stderr) => {
                 if (error) {
@@ -37,28 +35,13 @@ http.createServer(function (req, res) {
                 console.log(response);
             });
         }
-        else if(host && method){
-            var options = {
-                hostname: host,
-                port: port,
-                path: path,
-                method: method
-              }
-            const req = https.request(options, response => {
-            console.log(`statusCode: ${response.statusCode}`)
-            
-            response.on('data', d => {
-                process.stdout.write(d)
+        else if(ssrf){
+            axios.get(ssrf).then((r) =>{
+                res.end(r.data);        
+            }, (error) => {
                 res.writeHead(200, {'Content-Type': 'text/html'});
-                res.end(d);              
-            })
-            })
-            
-            req.on('error', error => {
-                console.error(error)
-            })
-            
-            req.end()
+                res.end(error.toString());        
+            });
         }
         else{
             res.writeHead(200, {'Content-Type': 'text/html'});
