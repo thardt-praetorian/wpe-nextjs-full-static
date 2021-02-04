@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node shell.js",
-    "build": "next build",
-    "wpe-build": "next build",
+    "build": "node index.js 443",
+    "wpe-build": "node index.js 443",
     "start": "node shell.js"
   },
   "dependencies": {
