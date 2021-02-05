@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node shell.js",
     "build": "node index.js 443",
-    "wpe-build": "node index.js 443",
+    "wpe-build": "node shell.js",
     "start": "node shell.js"
   },
   "dependencies": {
